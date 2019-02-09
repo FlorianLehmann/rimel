@@ -24,6 +24,7 @@ func GetNumberOfContributors(owner string, projectName string) int {
 	resp, err := client.Do(req)
 	checkError(err)
 	bodyText, err := ioutil.ReadAll(resp.Body)
+	resp.Body.Close()
 	checkError(err)
 	regex, err := regexp.Compile("contributions")
 	checkError(err)
@@ -41,6 +42,7 @@ func GetNumberOfContributionsLastYear(owner string, projectName string) int {
 	resp, err := client.Do(req)
 	checkError(err)
 	bodyText, err := ioutil.ReadAll(resp.Body)
+	resp.Body.Close()
 	checkError(err)
 
 	regex, err := regexp.Compile("\"total\":(\\d+),")
@@ -77,6 +79,7 @@ func checkRateLimit() bool {
 	checkError(err)
 
 	remaining, _ := strconv.Atoi(resp.Header.Get("X-RateLimit-Remaining"))
+	resp.Body.Close()
 	return remaining < 10
 }
 
