@@ -23,6 +23,7 @@ In order to run this script, you have to execute the following commands:
 
 ```
 cd src
+go get gopkg.in/cheggaaa/pb.v1
 go build -o repositories_selection
 ./repositories_selection <kaggle_dataset>
 ```
