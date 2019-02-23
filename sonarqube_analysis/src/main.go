@@ -45,19 +45,20 @@ func runAnalysis(pathRepository string) {
 	var hashs []string = retrieveCommitsMasterHash(pathRepository)
 	for _, hash := range hashs {
 		log.Println("Hash:" + hash)
+		log.Println(len(hashs))
 		_, err := exec.Command("sh", "-c", "cd "+pathRepository+" && git checkout -f "+hash).Output()
 		if err != nil {
 			log.Println(err)
 		}
-		sonarAnalysis(pathRepository)
+		sonarAnalysis(pathRepository, hash)
 	}
 	log.Println("End " + pathRepository)
 
 }
 
-func sonarAnalysis(pathRepository string) {
+func sonarAnalysis(pathRepository string, hash string) {
 	var projectName string = path.Base(pathRepository)
-	_, err := exec.Command("sh", "-c", "cd "+pathRepository+" && sonar-scanner -Dsonar.java.binaries=/tmp/empty -Dsonar.sources=. -Dsonar.projectKey="+projectName).Output()
+	_, err := exec.Command("sh", "-c", "cd "+pathRepository+" && sonar-scanner -Dsonar.java.binaries=/tmp/empty -Dsonar.sources=. -Dsonar.projectKey="+projectName+" -Dsonar.projectVersion="+hash ).Output()
 	if err != nil {
 		log.Println(err)
 	}
@@ -65,7 +66,7 @@ func sonarAnalysis(pathRepository string) {
 
 func retrieveCommitsMasterHash(pathRepository string) []string {
 	var hashs []string
-	out, err := exec.Command("sh", "-c", "cd "+pathRepository+" && git log master --pretty=format:'%H'").Output()
+	out, err := exec.Command("sh", "-c", "cd "+pathRepository+" && git log master --after='2018-02-15 00:00' --pretty=format:'%H'").Output()
 	if err != nil {
 		log.Println(err)
 		return hashs
