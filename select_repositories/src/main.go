@@ -22,25 +22,21 @@ func main() {
 
 	var f2 process.FilterByLanguageProportion = process.FilterByLanguageProportion{
 		Names:      []string{"Python", "Java", "JavaScript"},
-		Percentage: 60}
-	var f3 process.FilterByAmountBytes = process.FilterByAmountBytes{
-		Amount: 5000,
-	}
+		Percentage: 51}
 	var f4 process.FilterMinimumContributor = process.FilterMinimumContributor{
-		Minimum: 10,
+		Minimum: 2,
 	}
-	var f5 process.FilterMinimumContributionLastYear = process.FilterMinimumContributionLastYear{
-		Minimum: 100,
+	var f5 process.FilterLimitNumberProjects = process.FilterLimitNumberProjects{
+		Limit: 4980,
 	}
 	var f1 process.FilterDuplicateProject = process.FilterDuplicateProject{
 		RepositoriesFiltered: make(map[string]bool),
 	}
 
 	pipeline.AddFilter(&f1)
-	pipeline.AddFilter(&f2)
-	pipeline.AddFilter(&f3)
-	pipeline.AddFilter(&f4)
 	pipeline.AddFilter(&f5)
+	pipeline.AddFilter(&f2)
+	pipeline.AddFilter(&f4)
 
 	pipeline.Execute(repositories)
 
