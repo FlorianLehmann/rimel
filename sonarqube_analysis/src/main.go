@@ -58,7 +58,7 @@ func runAnalysis(pathRepository string) {
 
 func sonarAnalysis(pathRepository string, hash string) {
 	var projectName string = path.Base(pathRepository)
-	_, err := exec.Command("sh", "-c", "cd "+pathRepository+" && sonar-scanner -Dsonar.java.binaries=/tmp/empty -Dsonar.sources=. -Dsonar.projectKey="+projectName+" -Dsonar.projectVersion="+hash ).Output()
+	_, err := exec.Command("sh", "-c", "cd "+pathRepository+" && sonar-scanner -Dsonar.java.binaries=/tmp/empty -Dsonar.sources=. -Dsonar.projectKey="+projectName+" -Dsonar.projectVersion="+hash).Output()
 	if err != nil {
 		log.Println(err)
 	}

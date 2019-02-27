@@ -22,4 +22,4 @@ go build -o clone_repositories
 ./clone_repositories <output_dataset_filter>
 ```
 
-<output_dataset_filter> is the path of the output file of the script which process and filter the dataset.
+Where <output_dataset_filter> is the path of the output file of the script which process and filter the dataset.
