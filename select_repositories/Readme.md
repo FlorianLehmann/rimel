@@ -1,7 +1,5 @@
 # Selection of repositories
 
-
-
 ## Prerequisites
 
 In order to run this script, you need to install the following tools:
