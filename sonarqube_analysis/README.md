@@ -5,8 +5,15 @@
 In order to run this script, you need to install the following tools:
 
 ```
+Go (1.11.4)
 Sonarcube Server
-sonar-scanner
+sonar-scanner (exported in PATH)
+```
+
+You will need to create the following commands:
+
+```
+mkdir /tmp/empty
 ```
 
 ## Executing
