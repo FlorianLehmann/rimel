@@ -9,3 +9,4 @@ This repository has 4 folders, each one containing parts of the experience :
 -  "clone_repositories", which provides scripts that allows user to clone multiple repository from the output of the dataset filters.
 -  "select_repositories", which filters each repository
 -  "sonarcube_analysis", which peforms the sonarqube analysis
+-  "sonarqube_delta_analysis", which computes the delta between metrics of each commits
