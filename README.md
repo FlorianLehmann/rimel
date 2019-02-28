@@ -4,7 +4,7 @@ This goal of this project is to find out whether or not minor contributors bring
 
 ## Getting Started
 
-This repository has 4 folders, each one containing parts of the experience :
+This repository has 5 folders, each one containing parts of the experience :
 -  "kaggle", which contains the dataset we used for the experience. The source of the dataset is [here](https://www.kaggle.com/github/github-repos).
 -  "clone_repositories", which provides scripts that allows user to clone multiple repository from the output of the dataset filters.
 -  "select_repositories", which filters each repository
